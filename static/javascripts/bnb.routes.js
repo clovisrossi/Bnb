@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -17,6 +17,11 @@
                 controller: 'RegisterController',
                 controllerAs: 'vm',
                 templateUrl: '/static/templates/authentication/register.html'
+            })
+            .when('/login', {
+                controller: 'LoginController',
+                controllerAs: 'vm',
+                templateUrl: '/static/templates/authentication/login.html'
             })
             .otherwise('/');
     }
