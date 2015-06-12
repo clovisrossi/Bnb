@@ -1,18 +1,19 @@
 (function () {
-  'use strict';
+    /* jshint validthis: true */
+    'use strict';
 
-  angular
-    .module('bnb.config')
-    .config(config);
+    angular
+        .module('bnb.config')
+        .config(config);
 
-  config.$inject = ['$locationProvider'];
+    config.$inject = ['$locationProvider'];
 
-  /**
-  * @name config
-  * @desc Enable HTML5 routing
-  */
-  function config($locationProvider) {
-    $locationProvider.html5Mode(true);
-    $locationProvider.hashPrefix('!');
-  }
+    /**
+     * @name config
+     * @desc Enable HTML5 routing
+     */
+    function config($locationProvider) {
+        $locationProvider.html5Mode(true);
+        $locationProvider.hashPrefix('!');
+    }
 })();
