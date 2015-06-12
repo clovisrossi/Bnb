@@ -21,6 +21,7 @@
             isAuthenticated: isAuthenticated,
             login: login,
             register: register,
+            logout: logout,
             setAuthenticatedAccount: setAuthenticatedAccount,
             unauthenticate: unauthenticate
         };
@@ -59,7 +60,7 @@
                 console.error('Epic failure!');
             }
         }
-        
+
         /**
          * @name login
          * @desc Try to log in with email `email` and password `password`
@@ -73,23 +74,53 @@
                 email: email,
                 password: password
             }).then(loginSuccessFn, loginErrorFn);
+
+            /**
+             * @name loginSuccessFn
+             * @desc Set the authenticated account and redirect to index
+             */
+            function loginSuccessFn(data, status, headers, config) {
+                Authentication.setAuthenticatedAccount(data.data);
+                window.location = '/';
+            }
+
+            /**
+             * @name loginErrorFn
+             * @desc Log "Epic failure!" to the console
+             */
+            function loginErrorFn(data, status, headers, config) {
+                console.error('Epic failure!');
+            }
+
         }
 
         /**
-         * @name loginSuccessFn
-         * @desc Set the authenticated account and redirect to index
+         * @name logout
+         * @desc Try to log the user out
+         * @returns {Promise}
+         * @memberOf bnb.authentication.services.Authentication
          */
-        function loginSuccessFn(data, status, headers, config) {
-            Authentication.setAuthenticatedAccount(data.data);
-            window.location = '/';
-        }
+        function logout() {
+            return $http.post('/api/v1/auth/logout/')
+                .then(logoutSuccessFn, logoutErrorFn);
 
-        /**
-         * @name loginErrorFn
-         * @desc Log "Epic failure!" to the console
-         */
-        function loginErrorFn(data, status, headers, config) {
-            console.error('Epic failure!');
+            /**
+             * @name logoutSuccessFn
+             * @desc Unauthenticate and redirect to index with page reload
+             */
+            function logoutSuccessFn(data, status, headers, config) {
+                Authentication.unauthenticate();
+
+                window.location = '/';
+            }
+
+            /**
+             * @name logoutErrorFn
+             * @desc Log "Epic failure!" to the console
+             */
+            function logoutErrorFn(data, status, headers, config) {
+                console.error('Epic failure!');
+            }
         }
 
 
