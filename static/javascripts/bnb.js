@@ -6,7 +6,9 @@
             'bnb.config',
             'bnb.routes',
             'bnb.authentication',
-            'bnb.layout'
+            'bnb.layout',
+            'bnb.posts',
+            'bnb.utils'
         ]);
 
     angular
