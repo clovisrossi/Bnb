@@ -17,12 +17,12 @@
          * @desc The Factory to be returned
          */
         var Authentication = {
-            getAuthenticatedAccount: getAuthenticatedAccount,
-            isAuthenticated: isAuthenticated,
             login: login,
             register: register,
             logout: logout,
+            getAuthenticatedAccount: getAuthenticatedAccount,
             setAuthenticatedAccount: setAuthenticatedAccount,
+            isAuthenticated: isAuthenticated,
             unauthenticate: unauthenticate
         };
 
@@ -156,7 +156,9 @@
          * @memberOf bnb.authentication.services.Authentication
          */
         function setAuthenticatedAccount(account) {
-            $cookies.authenticatedAccount = JSON.stringify(account);
+            var json_account = JSON.parse(account);
+            document.cookie="authenticatedAccount="+JSON.stringify(json_account)+"";
+            //$cookies.authenticatedAccount = JSON.stringify(account);
         }
 
         /**

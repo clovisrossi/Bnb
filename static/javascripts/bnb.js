@@ -8,7 +8,8 @@
             'bnb.authentication',
             'bnb.layout',
             'bnb.posts',
-            'bnb.utils'
+            'bnb.utils',
+            'bnb.profiles',
         ]);
 
     angular

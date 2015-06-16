@@ -32,7 +32,6 @@
 
             Posts.create(vm.content).then(createPostSuccessFn, createPostErrorFn);
 
-
             /**
              * @name createPostSuccessFn
              * @desc Show snackbar with success message
@@ -40,7 +39,6 @@
             function createPostSuccessFn(data, status, headers, config) {
                 Snackbar.show('Success! Post created.');
             }
-
 
             /**
              * @name createPostErrorFn

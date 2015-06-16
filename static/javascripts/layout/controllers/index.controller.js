@@ -34,7 +34,6 @@
                 vm.posts.shift();
             });
 
-
             /**
              * @name postsSuccessFn
              * @desc Update posts array on view
@@ -42,7 +41,6 @@
             function postsSuccessFn(data, status, headers, config) {
                 vm.posts = data.data;
             }
-
 
             /**
              * @name postsErrorFn

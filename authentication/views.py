@@ -54,8 +54,8 @@ class LoginView(views.APIView):
                 login(request, account)
 
                 serialized = AccountSerializer(account)
-
-                return Response(serialized.data)
+                json_account = json.dumps(serialized.data)
+                return Response(json_account)
             else:
                 return Response({
                     'status': 'Unauthorized',
